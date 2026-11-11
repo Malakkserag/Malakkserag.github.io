@@ -1,4 +1,4 @@
-/* Small illustrations for projects 04 and 05. */
+/* Small illustrations for projects 05 and 06. */
 (function () {
   'use strict';
 

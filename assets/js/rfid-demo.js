@@ -1,4 +1,4 @@
-/* Fig. 2 — RFID access control, simulated.
+/* Fig. 3 — RFID access control, simulated.
    Mirrors the firmware in github.com/Malakkserag/RFID_Scanning_system_8051:
    the Arduino keeps up to MAX_CARDS UIDs in EEPROM, auto-enrols unknown cards
    while there is room, and sends 'A' or 'D' to the 8051, which drives the

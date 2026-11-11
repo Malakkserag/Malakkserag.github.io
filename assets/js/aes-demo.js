@@ -1,4 +1,4 @@
-/* AES figures: the animated name in the hero (Fig. 0) and the stepper (Fig. 1).
+/* AES figures: the animated name in the hero (Fig. 0) and the stepper (Fig. 2).
    Both are driven by the real cipher in aes-core.js. */
 (function () {
   'use strict';
@@ -95,7 +95,7 @@
   })();
 
   /* ------------------------------------------------------------------ */
-  /* Fig. 1 — stepper                                                    */
+  /* Fig. 2 — stepper                                                    */
   /* ------------------------------------------------------------------ */
   (function stepper() {
     var rootEl = document.getElementById('aes-demo');

@@ -13,11 +13,12 @@ files as they are, and opening `index.html` in a browser works too.
 | `index.html` | All of the content. Every section is marked with a comment. |
 | `assets/css/style.css` | The whole design. Colours and fonts are variables at the top. |
 | `assets/js/site.js` | Theme switch, navigation, scroll effects. |
+| `assets/js/pipeline-demo.js` | The CI/CD pipeline simulation and the Student Manager app it deploys (Fig. 1). |
 | `assets/js/aes-core.js` | AES-128 written out by hand (JavaScript port of the Python simulator). |
-| `assets/js/aes-demo.js` | The animated name in the hero and the AES stepper (Fig. 0 and 1). |
-| `assets/js/rfid-demo.js` | The RFID access-control simulation (Fig. 2). |
+| `assets/js/aes-demo.js` | The animated name in the hero and the AES stepper (Fig. 0 and 2). |
+| `assets/js/rfid-demo.js` | The RFID access-control simulation (Fig. 3). |
 | `assets/js/cyberclash-core.js` | CyberClash rules, Minimax and Alpha-Beta (port of the Python game). |
-| `assets/js/cyberclash-demo.js` | The playable CyberClash board (Fig. 3). |
+| `assets/js/cyberclash-demo.js` | The playable CyberClash board (Fig. 4). |
 | `assets/js/mini-demos.js` | The news search and cinema seat picker. |
 | `assets/img/` | Favicon and the social preview image. |
 | `404.html` | Not-found page. |
@@ -30,7 +31,9 @@ files as they are, and opening `index.html` in a browser works too.
 - **Add a project:** copy one of the `<article class="plate">` or `<article class="card">`
   blocks in `index.html` and change the text and links.
 - **Add a notebook:** copy an `<li>` inside `<ul class="ledger">`.
-- **Update experience or education:** edit the matching section in `index.html`.
+- **Update experience, education or certifications:** edit the matching section in `index.html`.
+- **Change the pipeline demo:** the stages and log lines in `assets/js/pipeline-demo.js` follow
+  `.gitlab-ci.yml` in the GitLab repository. Keep the two in step if the pipeline changes.
 - **Change the name in the hero animation:** the text and key are in `assets/js/aes-demo.js`
   and must be exactly 16 characters each. Update the static letters in the
   `hero-aes-grid` block of `index.html` to match.

@@ -1,4 +1,4 @@
-/* Fig. 3 — CyberClash, playable. Rules and search live in cyberclash-core.js;
+/* Fig. 4 — CyberClash, playable. Rules and search live in cyberclash-core.js;
    this file only draws the network and handles turns. */
 (function () {
   'use strict';
