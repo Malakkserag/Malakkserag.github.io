@@ -3,610 +3,884 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Malak Serag Ibrahim — Computer Engineer</title>
-<meta name="description" content="Computer Engineering portfolio of Malak Serag Ibrahim — building across hardware and software. Cairo, Egypt." />
+<title>Malak Serag — Computer Engineer</title>
+<meta name="description" content="Malak Serag Ibrahim is a computer engineering student at AAST in Cairo, working from 8051 assembly up to CI/CD pipelines, with internships in DevOps, cybersecurity, data and full-stack. Try her pipeline, AES-128, RFID and game-AI projects live in the page." />
+<meta name="author" content="Malak Serag Ibrahim" />
+<link rel="canonical" href="https://malakkserag.github.io/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://malakkserag.github.io/" />
+<meta property="og:title" content="Malak Serag — Computer Engineer" />
+<meta property="og:description" content="From the register up to the browser. DevOps, security, embedded, AI, data and full-stack projects — four of them running live in the page." />
+<meta property="og:image" content="https://malakkserag.github.io/assets/img/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0d0d12" media="(prefers-color-scheme: dark)" />
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+
+<script>
+  // Set the theme before first paint so there is no flash.
+  (function () {
+    var t;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') {
+      t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    document.documentElement.setAttribute('data-theme', t);
+    document.documentElement.className = 'js';
+  })();
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-<style>
-  :root{
-    --bg:#0b0c11;
-    --panel:#14161f;
-    --panel-2:#181b26;
-    --ink:#e9eaf0;
-    --muted:#9a9db0;
-    --faint:#6b6e82;
-    --line:rgba(255,255,255,.07);
-    --line-2:rgba(255,255,255,.12);
-    --indigo:#7c6cff;
-    --indigo-soft:#a99bff;
-    --violet:#b07bff;
-    --glow:rgba(124,108,255,.16);
-    --r:16px;
-    --ease:cubic-bezier(.22,1,.36,1);
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Inter',system-ui,sans-serif;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-    background:
-      radial-gradient(600px circle at 80% -5%,rgba(124,108,255,.10),transparent 60%),
-      radial-gradient(500px circle at 0% 25%,rgba(176,123,255,.07),transparent 55%);}
-  a{color:inherit;text-decoration:none}
-  ::selection{background:var(--indigo);color:#fff}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
-  .mono{font-family:'JetBrains Mono',monospace}
-  .accent{color:var(--indigo-soft)}
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
 
-  /* nav */
-  header.nav{position:sticky;top:0;z-index:100;backdrop-filter:saturate(140%) blur(2px);
-    transition:background .4s var(--ease),border-color .4s var(--ease),backdrop-filter .4s var(--ease);
-    border-bottom:1px solid transparent}
-  header.nav.scrolled{background:rgba(11,12,17,.82);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--line)}
-  .nav-in{max-width:1080px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
-  .brand{font-family:'Sora';font-weight:800;letter-spacing:-.01em;font-size:1.02rem;display:flex;align-items:center;gap:9px}
-  .brand .pip{width:9px;height:9px;border-radius:50%;background:var(--indigo);box-shadow:0 0 12px var(--indigo)}
-  .nav-links{display:flex;gap:26px;font-size:.9rem}
-  .nav-links a{color:var(--muted);transition:color .25s}
-  .nav-links a:hover{color:var(--ink)}
-  .nav-btn{font-size:.86rem;font-weight:600;padding:9px 16px;border-radius:30px;background:var(--indigo);color:#fff;transition:.3s var(--ease)}
-  .nav-btn:hover{background:#6a59f5;transform:translateY(-1px)}
-  @media(max-width:760px){.nav-links{display:none}}
-
-  /* hero */
-  .hero{padding:88px 0 60px}
-  .status{display:inline-flex;align-items:center;gap:9px;font-size:.8rem;color:var(--muted);
-    border:1px solid var(--line-2);border-radius:30px;padding:6px 14px;margin-bottom:26px}
-  .status .dot{width:8px;height:8px;border-radius:50%;background:#54e6a0;box-shadow:0 0 8px #54e6a0;animation:pulse 2s infinite}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-  .hero h1{font-family:'Sora';font-weight:800;font-size:clamp(2.4rem,6vw,4.3rem);line-height:1.04;letter-spacing:-.025em;max-width:16ch}
-  .hero h1 .g{background:linear-gradient(100deg,var(--indigo-soft),var(--violet));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .hero .role{margin-top:14px;font-family:'JetBrains Mono';font-size:.98rem;color:var(--indigo-soft);letter-spacing:.02em}
-  .hero .bio{margin-top:24px;font-size:1.12rem;color:var(--muted);max-width:60ch}
-  .hero .links{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px}
-  .lnk{display:inline-flex;align-items:center;gap:8px;font-size:.92rem;font-weight:500;
-    border:1px solid var(--line-2);border-radius:12px;padding:11px 18px;color:var(--ink);transition:.28s var(--ease);background:var(--panel)}
-  .lnk:hover{border-color:var(--indigo);background:var(--panel-2);transform:translateY(-2px)}
-  .lnk.primary{background:var(--indigo);border-color:var(--indigo)}
-  .lnk.primary:hover{background:#6a59f5}
-  .lnk svg{width:16px;height:16px}
-
-  /* section scaffolding */
-  section{padding:64px 0;position:relative}
-  .sec-label{display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono';font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--indigo-soft);margin-bottom:14px}
-  .sec-label::before{content:"";width:26px;height:1px;background:var(--indigo)}
-  h2.sec{font-family:'Sora';font-weight:700;font-size:clamp(1.7rem,3.6vw,2.5rem);letter-spacing:-.02em;margin-bottom:8px}
-  .sec-intro{color:var(--muted);max-width:62ch;margin-bottom:38px}
-
-  /* skills matrix */
-  .matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  .mcard{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:24px;transition:border-color .3s,transform .3s var(--ease)}
-  .mcard:hover{border-color:var(--line-2);transform:translateY(-3px)}
-  .mcard h3{font-size:.82rem;font-family:'JetBrains Mono';letter-spacing:.1em;text-transform:uppercase;color:var(--indigo-soft);margin-bottom:16px;display:flex;align-items:center;gap:9px}
-  .mcard h3 .ic{font-size:1rem}
-  .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .chip{font-size:.84rem;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:6px 11px;color:var(--ink);transition:.25s}
-  .mcard:hover .chip{border-color:var(--line-2)}
-  @media(max-width:680px){.matrix{grid-template-columns:1fr}}
-
-  /* projects */
-  .proj{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-bottom:26px;transition:border-color .35s}
-  .proj:hover{border-color:var(--line-2)}
-  .proj-top{padding:30px 30px 0;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:flex-start}
-  .proj-id{font-family:'JetBrains Mono';font-size:.78rem;color:var(--faint);letter-spacing:.12em}
-  .proj h3{font-family:'Sora';font-weight:700;font-size:1.5rem;letter-spacing:-.01em}
-  .proj .tagline{color:var(--indigo-soft);font-size:.96rem;margin-top:4px}
-  .proj .badges{display:flex;gap:8px;flex-wrap:wrap}
-  .badge{font-family:'JetBrains Mono';font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-2);border-radius:30px;padding:5px 11px}
-  .proj-body{padding:22px 30px 30px;display:grid;grid-template-columns:1.5fr 1fr;gap:30px}
-  .blk-h{font-family:'JetBrains Mono';font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo-soft);margin-bottom:9px}
-  .blk + .blk{margin-top:22px}
-  .blk p{color:var(--muted);font-size:.97rem}
-  .arch{background:var(--panel-2);border:1px solid var(--line);border-radius:14px;padding:20px;align-self:start}
-  .arch .split{margin-bottom:16px}
-  .arch .split:last-child{margin-bottom:0}
-  .arch .sl{font-size:.72rem;font-family:'JetBrains Mono';color:var(--faint);text-transform:uppercase;letter-spacing:.1em;margin-bottom:7px}
-  .arch .chips .chip{background:var(--panel);font-size:.78rem}
-  .metrics{list-style:none;margin-top:4px}
-  .metrics li{display:flex;gap:11px;align-items:flex-start;color:var(--ink);font-size:.95rem;padding:5px 0}
-  .metrics li::before{content:"▹";color:var(--indigo-soft);font-size:.9rem;line-height:1.5}
-  .proj-foot{border-top:1px solid var(--line);padding:16px 30px;display:flex;gap:18px;flex-wrap:wrap}
-  .proj-foot a{font-size:.86rem;color:var(--muted);display:inline-flex;align-items:center;gap:7px;transition:color .25s}
-  .proj-foot a:hover{color:var(--indigo-soft)}
-  .proj-foot svg{width:15px;height:15px}
-  @media(max-width:760px){.proj-body{grid-template-columns:1fr;gap:22px}.proj-top,.proj-body,.proj-foot{padding-left:22px;padding-right:22px}}
-
-  /* additional projects strip */
-  .more{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  .more a{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;transition:.3s var(--ease)}
-  .more a:hover{border-color:var(--indigo);transform:translateY(-2px)}
-  .more h4{font-size:1.02rem;font-family:'Sora';font-weight:600;margin-bottom:4px}
-  .more p{color:var(--muted);font-size:.86rem}
-  .more .mt{font-family:'JetBrains Mono';font-size:.7rem;color:var(--faint);margin-top:10px;letter-spacing:.05em}
-  @media(max-width:680px){.more{grid-template-columns:1fr}}
-
-  /* experience timeline */
-  .xp{position:relative;border-left:1px solid var(--line-2);margin-left:6px}
-  .xp-item{position:relative;padding:0 0 34px 30px}
-  .xp-item:last-child{padding-bottom:0}
-  .xp-item::before{content:"";position:absolute;left:-5px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--indigo);box-shadow:0 0 0 4px var(--bg)}
-  .xp-head{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:baseline}
-  .xp-head h3{font-family:'Sora';font-weight:600;font-size:1.18rem}
-  .xp-head .when{font-family:'JetBrains Mono';font-size:.8rem;color:var(--faint);white-space:nowrap}
-  .xp-org{color:var(--indigo-soft);font-size:.94rem;margin:2px 0 12px}
-  .xp-item ul{list-style:none}
-  .xp-item ul li{color:var(--muted);font-size:.95rem;padding:4px 0 4px 18px;position:relative}
-  .xp-item ul li::before{content:"–";position:absolute;left:0;color:var(--faint)}
-
-  /* education */
-  .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:26px}
-  .edu{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:24px}
-  .edu h3{font-family:'Sora';font-weight:600;font-size:1.12rem;margin-bottom:4px}
-  .edu .deg{color:var(--indigo-soft);font-size:.92rem}
-  .edu .meta{color:var(--faint);font-family:'JetBrains Mono';font-size:.8rem;margin-top:10px}
-  @media(max-width:680px){.edu-grid{grid-template-columns:1fr}}
-  .course-h{font-family:'JetBrains Mono';font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo-soft);margin-bottom:14px}
-
-  /* footer / contact */
-  .contact{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:48px;text-align:center;margin-bottom:48px}
-  .contact h2{font-family:'Sora';font-weight:800;font-size:clamp(1.8rem,4.4vw,2.8rem);letter-spacing:-.02em}
-  .contact p{color:var(--muted);max-width:46ch;margin:14px auto 28px}
-  .contact .links{justify-content:center;display:flex;flex-wrap:wrap;gap:12px}
-  footer{border-top:1px solid var(--line);padding:26px 0 50px}
-  .foot-in{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.82rem;color:var(--faint);font-family:'JetBrains Mono'}
-
-  /* reveal */
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-  .reveal.in{opacity:1;transform:none}
-  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.status .dot{animation:none}}
-</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Malak Serag Ibrahim",
+  "alternateName": "Malak Serag",
+  "url": "https://malakkserag.github.io/",
+  "jobTitle": "Computer Engineering Student",
+  "address": { "@type": "PostalAddress", "addressLocality": "Cairo", "addressCountry": "EG" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Arab Academy for Science, Technology & Maritime Transport" },
+  "sameAs": ["https://github.com/Malakkserag", "https://gitlab.com/Malak21", "https://linkedin.com/in/malak-serag-ibrahim"]
+}
+</script>
 </head>
 <body>
 
+<!-- icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.7c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></symbol>
+  <symbol id="i-gitlab" viewBox="0 0 24 24"><path fill="currentColor" d="m23.6 9.593-.033-.086L20.3.98a.851.851 0 0 0-.336-.405.875.875 0 0 0-1 .054.875.875 0 0 0-.29.44l-2.205 6.748H7.538L5.332 1.07a.857.857 0 0 0-.29-.441.875.875 0 0 0-1-.054.859.859 0 0 0-.336.405L.433 9.502l-.032.086a6.066 6.066 0 0 0 2.012 7.01l.011.009.03.021 4.976 3.727 2.462 1.863 1.5 1.132a1.009 1.009 0 0 0 1.22 0l1.499-1.132 2.462-1.863 5.006-3.749.012-.01a6.068 6.068 0 0 0 2.01-7.003z"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33 0-3.04-1.85-3.04s-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.8 0 0 .77 0 1.73v20.54C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m21 7.5-9 6-9-6"/></g></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-12z"/><path d="M14 2.5v5h5M12 11.5v6M9.5 15l2.5 2.5 2.5-2.5"/></g></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8.5 7H17v8.5"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M6 13l6 6 6-6"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></g></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.2v13.6a.7.7 0 0 0 1.1.6l10.2-6.8a.7.7 0 0 0 0-1.2L9.100 4.600A.7.7 0 0 0 8 5.200z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path fill="currentColor" d="M7 5h3.500v14H7zM13.500 5H17v14h-3.500z"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14.500 6l-6 6 6 6"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9.500 6l6 6-6 6"/></symbol>
+  <symbol id="i-reset" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 1 0 2.600-5.900M4 4.500v4.500h4.500"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M4 8h16M4 16h16"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
 <header class="nav" id="nav">
   <div class="nav-in">
-    <a href="#top" class="brand"><span class="pip"></span> Malak Serag</a>
-    <nav class="nav-links">
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
+    <a href="#top" class="brand" aria-label="Malak Serag — back to top">
+      <span class="brand-mark" aria-hidden="true">MS</span>
+      <span class="brand-name">Malak Serag</span>
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#toolkit">Toolkit</a>
       <a href="#experience">Experience</a>
       <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <a href="#contact" class="nav-btn">Get in touch</a>
+    <div class="nav-actions">
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch colour theme">
+        <svg class="i-sun"><use href="#i-sun"/></svg>
+        <svg class="i-moon"><use href="#i-moon"/></svg>
+      </button>
+      <a class="btn btn-sm btn-solid" href="Malak%20Serag%20CV.pdf" target="_blank" rel="noopener">Résumé</a>
+      <button class="icon-btn nav-menu" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <svg class="i-open"><use href="#i-menu"/></svg>
+        <svg class="i-shut"><use href="#i-close"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
-<main id="top">
+<main id="main">
 
-  <!-- 1. HERO -->
-  <section class="hero wrap" style="padding-top:64px">
-    <div class="reveal">
-      <span class="status"><span class="dot"></span> Open to internships &amp; new-grad roles · Cairo, EG</span>
-      <h1>Computer engineer, still exploring — <span class="g">building a bit of everything.</span></h1>
-      <p class="bio">I'm Malak Serag Ibrahim — a Computer Engineering student with hands-on experience in software development, data analytics, and system design. Skilled in building web, mobile, and desktop applications and analyzing data to extract insights. Experienced in academic and industry projects and currently exploring software engineering, data analytics, cybersecurity, and DevOps.</p>
-      <div class="links">
-        <a class="lnk primary" href="https://github.com/Malakkserag" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.7c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg>
-          GitHub
-        </a>
-        <a class="lnk" href="https://linkedin.com/in/malak-serag-ibrahim" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33 0-3.04-1.85-3.04s-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.8 0 0 .77 0 1.73v20.54C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
-          LinkedIn
-        </a>
-        <a class="lnk" href="Malak%20Serag%20CV.pdf" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/></svg>
-          Resume
-        </a>
-        <a class="lnk" href="mailto:malakkserag2@gmail.com">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-          Email
-        </a>
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>Open to internships · Cairo, Egypt</p>
+        <h1>
+          <span class="h1-kicker">Malak Serag, computer engineer —</span>
+          from the <em>register</em> up to the <em>browser.</em>
+        </h1>
+        <p class="hero-bio">I'm a fourth-year computer engineering student at AAST. I write 8051 assembly, implement ciphers by hand, teach search algorithms to play games, pull signal out of messy data, ship web apps and build the pipelines that deploy them — and I like knowing how each layer works underneath the next one.</p>
+        <div class="hero-cta">
+          <a class="btn btn-solid" href="#work">See the work <svg><use href="#i-down"/></svg></a>
+          <a class="btn" href="Malak%20Serag%20CV.pdf" target="_blank" rel="noopener"><svg><use href="#i-file"/></svg> Résumé</a>
+          <span class="hero-social">
+            <a class="icon-btn" href="https://github.com/Malakkserag" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
+            <a class="icon-btn" href="https://gitlab.com/Malak21" target="_blank" rel="noopener" aria-label="GitLab"><svg><use href="#i-gitlab"/></svg></a>
+            <a class="icon-btn" href="https://linkedin.com/in/malak-serag-ibrahim" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
+            <a class="icon-btn" href="mailto:malakkserag2@gmail.com" aria-label="Email"><svg><use href="#i-mail"/></svg></a>
+          </span>
+        </div>
       </div>
+
+      <!-- Her name, run through real AES-128. Rendered by assets/js/aes-demo.js -->
+      <figure class="hero-fig" id="hero-aes" aria-label="The text MALAK SERAG 2028 being encrypted with AES-128, round by round">
+        <div class="marks" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="hero-fig-head">
+          <span>Fig. 0</span>
+          <span id="hero-aes-phase">plaintext</span>
+        </div>
+        <div class="hero-matrix" id="hero-aes-grid" aria-hidden="true">
+          <span>M</span><span>K</span><span>R</span><span>2</span>
+          <span>A</span><span>&nbsp;</span><span>A</span><span>0</span>
+          <span>L</span><span>S</span><span>G</span><span>2</span>
+          <span>A</span><span>E</span><span>&nbsp;</span><span>8</span>
+        </div>
+        <div class="hero-rounds" id="hero-aes-rounds" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <figcaption>
+          <dl>
+            <div><dt>in</dt><dd>"MALAK SERAG 2028"</dd></div>
+            <div><dt>key</dt><dd>"COMPUTERENGINEER"</dd></div>
+            <div><dt>out</dt><dd id="hero-aes-out">················</dd></div>
+          </dl>
+          <p>My name through ten rounds of AES-128, computed in your browser. <a href="#p-aes">Step through it yourself ↓</a></p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="wrap">
+      <dl class="specs">
+        <div><dt>Jan 2028</dt><dd>B.Sc. Computer Engineering at AAST, expected graduation</dd></div>
+        <div><dt>4 internships</dt><dd>in DevOps, data and BI, cybersecurity and full-stack development</dd></div>
+        <div><dt>92%</dt><dd>overall in a three-round network, blue-team and red-team CTF at MCS</dd></div>
+        <div><dt>3 years</dt><dd>teaching computer science and maths as an IGCSE assistant</dd></div>
+      </dl>
     </div>
   </section>
 
-  <!-- 2. SKILLS MATRIX -->
-  <section id="skills" class="wrap">
-    <div class="reveal">
-      <p class="sec-label">02 · Stack</p>
-      <h2 class="sec">Technical skills matrix</h2>
-      <p class="sec-intro">A working toolkit that spans the full computer-engineering range — from register-level firmware to production web apps and data pipelines.</p>
-    </div>
-    <div class="matrix">
-      <div class="mcard reveal">
-        <h3><span class="ic">⌨️</span> Languages</h3>
-        <div class="chips"><span class="chip">C</span><span class="chip">C++</span><span class="chip">C#</span><span class="chip">Java</span><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">SQL</span><span class="chip">8051 Assembly</span><span class="chip">VHDL</span></div>
-      </div>
-      <div class="mcard reveal">
-        <h3><span class="ic">🔌</span> Hardware &amp; MCUs</h3>
-        <div class="chips"><span class="chip">8051 Microcontroller (AT89C51)</span><span class="chip">Arduino</span><span class="chip">MFRC522 RFID</span><span class="chip">EEPROM</span><span class="chip">LCD / Servo interfacing</span><span class="chip">Digital design (FSMs, counters, flip-flops)</span></div>
-      </div>
-      <div class="mcard reveal">
-        <h3><span class="ic">🌐</span> Software, OS &amp; Protocols</h3>
-        <div class="chips"><span class="chip">SPI</span><span class="chip">Serial / UART</span><span class="chip">REST APIs</span><span class="chip">JSON</span><span class="chip">Networking fundamentals</span><span class="chip">GNS3</span><span class="chip">System administration</span><span class="chip">SAP (exposure)</span></div>
-      </div>
-      <div class="mcard reveal">
-        <h3><span class="ic">🧩</span> Web &amp; Mobile</h3>
-        <div class="chips"><span class="chip">Vue.js</span><span class="chip">Nuxt.js</span><span class="chip">Node.js</span><span class="chip">Flutter</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Tailwind CSS</span></div>
-      </div>
-      <div class="mcard reveal">
-        <h3><span class="ic">📊</span> ML &amp; Data Analytics</h3>
-        <div class="chips"><span class="chip">Scikit-learn</span><span class="chip">Pandas</span><span class="chip">Matplotlib</span><span class="chip">Seaborn</span><span class="chip">Linear &amp; Logistic Regression</span><span class="chip">K-Means</span><span class="chip">Feature engineering</span><span class="chip">Model evaluation</span></div>
-      </div>
-      <div class="mcard reveal">
-        <h3><span class="ic">🔐</span> Security &amp; Networking</h3>
-        <div class="chips"><span class="chip">AES-128</span><span class="chip">Cryptography (S-Box, key expansion)</span><span class="chip">GF(2⁸) arithmetic</span><span class="chip">Network security basics</span><span class="chip">Data security principles</span></div>
-      </div>
-      <div class="mcard reveal">
-        <h3><span class="ic">🛠️</span> Design &amp; Dev Tools</h3>
-        <div class="chips"><span class="chip">Proteus</span><span class="chip">Arduino IDE</span><span class="chip">ISE Project Navigator</span><span class="chip">AutoCAD</span><span class="chip">MATLAB</span><span class="chip">OxyPlot</span><span class="chip">Tkinter</span></div>
-      </div>
-      <div class="mcard reveal">
-        <h3><span class="ic">⚙️</span> Workflow</h3>
-        <div class="chips"><span class="chip">Git</span><span class="chip">Postman</span><span class="chip">Jupyter Notebook</span><span class="chip">Data cleaning &amp; visualization</span></div>
-      </div>
-    </div>
-  </section>
+  <!-- ============ WORK ============ -->
+  <section id="work" class="section">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-no">01</span>
+        <h2>Selected <em>work</em></h2>
+        <p>Six projects, one from each layer I've worked at. The first four run right here — rebuilt or simulated in JavaScript from the originals, so you can try them without cloning anything.</p>
+      </header>
 
-  <!-- 3. FEATURED PROJECTS -->
-  <section id="projects" class="wrap">
-    <div class="reveal">
-      <p class="sec-label">03 · Selected work</p>
-      <h2 class="sec">Featured projects</h2>
-      <p class="sec-intro">Four projects I'm proud of, each told through the problem, the engineering decisions, and what shipped. The full set lives on GitHub.</p>
-    </div>
+      <!-- ---------- 01 CI/CD pipeline ---------- -->
+      <article class="plate reveal" id="p-pipeline">
+        <div class="plate-info">
+          <p class="plate-meta"><span class="plate-no">01</span><span>DevOps</span><span>Sep 2026</span><span>MTS internship</span></p>
+          <h3>Student Manager: CI/CD &amp; Docker Deployment</h3>
+          <p class="lede">The end of my DevOps internship at MTS: a Spring Boot student manager that travels from <code>git push</code> to a running container on an Ubuntu VM with nobody touching the server in between.</p>
+          <ul class="built">
+            <li>A GitLab pipeline that builds, tests, packages and deploys, run by a GitLab Runner I configured on Ubuntu with the shell executor.</li>
+            <li>A multi-stage Dockerfile: Maven builds the JAR in a JDK image, a slim JRE image runs it as a non-root user. The image goes to Docker Hub using CI/CD variables for the login.</li>
+            <li>The app and PostgreSQL as separate containers on their own Docker network, with a named volume so the data outlives every redeploy.</li>
+            <li>Debugged along the way: PostgreSQL connectivity, Docker networking, port mapping and VirtualBox networking.</li>
+          </ul>
+          <ul class="chips" aria-label="Stack">
+            <li>Java 17</li><li>Spring Boot</li><li>Maven</li><li>GitLab CI/CD</li><li>GitLab Runner</li><li>Docker</li><li>Docker Hub</li><li>PostgreSQL</li><li>Ubuntu</li>
+          </ul>
+          <p class="plate-links">
+            <a class="link" href="https://gitlab.com/Malak21/student-manager-cicd-docker-deployment" target="_blank" rel="noopener"><svg><use href="#i-gitlab"/></svg>Repository<svg class="ar"><use href="#i-arrow"/></svg></a>
+            <a class="link" href="https://hub.docker.com/r/malakk21/student-app" target="_blank" rel="noopener">Docker Hub image<svg class="ar"><use href="#i-arrow"/></svg></a>
+          </p>
+        </div>
 
-    <!-- Project 1: RFID -->
-    <article class="proj reveal">
-      <div class="proj-top">
-        <div>
-          <span class="proj-id">PROJECT 01 · June 2026</span>
-          <h3>RFID Access Control System</h3>
-          <p class="tagline">A two-processor smart lock that reads, verifies and grants access in real time.</p>
-        </div>
-        <div class="badges"><span class="badge">Embedded</span><span class="badge">Hardware</span></div>
-      </div>
-      <div class="proj-body">
-        <div>
-          <div class="blk">
-            <p class="blk-h">The problem &amp; engineering challenge</p>
-            <p>A single microcontroller couldn't both poll an RFID reader over SPI and drive a lock, LCD, LEDs and buzzer without timing conflicts. The challenge was to split responsibilities across two processors and keep them in sync through a reliable communication link — while persisting authorized cards so the system survives a power cycle.</p>
+        <div class="fig" id="pl-demo">
+          <div class="fig-bar">
+            <span class="fig-tag">Fig. 1</span>
+            <span class="fig-title">Push a commit, watch it ship</span>
+            <span class="fig-live">Live</span>
           </div>
-          <div class="blk">
-            <p class="blk-h">Key deliverables</p>
-            <ul class="metrics">
-              <li>Two-processor architecture: Arduino + MFRC522 reads UIDs over SPI; an AT89C51 (8051) drives the lock, LCD, LEDs and buzzer.</li>
-              <li>UID verification against records stored in EEPROM, with auto-enrollment of new cards.</li>
-              <li>Grant/deny decisions exchanged over a serial command link between the two controllers.</li>
-              <li>Full circuit designed and simulated in Proteus before hardware assembly.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="arch">
-          <div class="split">
-            <p class="sl">Hardware</p>
-            <div class="chips"><span class="chip">AT89C51 (8051)</span><span class="chip">Arduino</span><span class="chip">MFRC522 RFID</span><span class="chip">EEPROM</span><span class="chip">Servo lock · LCD</span></div>
-          </div>
-          <div class="split">
-            <p class="sl">Software / Protocols</p>
-            <div class="chips"><span class="chip">8051 Assembly</span><span class="chip">SPI</span><span class="chip">Serial link</span><span class="chip">Proteus</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="proj-foot">
-        <a href="https://github.com/Malakkserag" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.7c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg> View repository</a>
-        <a href="https://github.com/Malakkserag" target="_blank" rel="noopener">⬡ Proteus block diagram</a>
-      </div>
-    </article>
+          <div class="fig-body">
+            <div class="pl-setup">
+              <div class="seg" role="group" aria-label="Commit to push" id="pl-kind">
+                <button type="button" class="on" data-kind="pass" aria-pressed="true">Good commit</button>
+                <button type="button" data-kind="fail" aria-pressed="false">Breaks a test</button>
+              </div>
+              <button type="button" class="btn btn-sm btn-solid" id="pl-push"><svg><use href="#i-play"/></svg>git push</button>
+            </div>
 
-    <!-- Project 2: AES -->
-    <article class="proj reveal">
-      <div class="proj-top">
-        <div>
-          <span class="proj-id">PROJECT 02 · June 2026</span>
+            <ol class="pl-stages" aria-label="Pipeline stages">
+              <li class="pl-stage pending" data-stage="build"><i class="pl-dot" aria-hidden="true"></i><b>build</b><span class="pl-jobname">build_project</span><span class="pl-state">pending</span></li>
+              <li class="pl-stage pending" data-stage="test"><i class="pl-dot" aria-hidden="true"></i><b>test</b><span class="pl-jobname">test_project</span><span class="pl-state">pending</span></li>
+              <li class="pl-stage pending" data-stage="package"><i class="pl-dot" aria-hidden="true"></i><b>package</b><span class="pl-jobname">package_project</span><span class="pl-state">pending</span></li>
+              <li class="pl-stage pending" data-stage="deploy"><i class="pl-dot" aria-hidden="true"></i><b>deploy</b><span class="pl-jobname">deploy_project</span><span class="pl-state">pending</span></li>
+            </ol>
+
+            <div class="pl-term">
+              <div class="pl-term-bar"><span id="pl-ref">gitlab-runner · no pipeline yet</span><code id="pl-job">idle</code></div>
+              <code class="pl-log" id="pl-log" tabindex="0" role="log" aria-label="Runner output"></code>
+            </div>
+
+            <div class="pl-host" id="pl-host">
+              <p class="pl-host-label" aria-hidden="true"><span>Ubuntu VM · VirtualBox</span><span>student-network</span></p>
+              <div class="pl-board">
+                <div class="mcu off" id="pl-app">
+                  <p class="mcu-name">student-app <span>Spring Boot</span></p>
+                  <p class="mcu-line"><span>image</span><b>malakk21/student-app</b></p>
+                  <p class="mcu-line"><span>commit</span><b id="pl-app-sha">—</b></p>
+                  <p class="mcu-line"><span>ports</span><b>80 → 9000</b></p>
+                  <p class="mcu-line"><span>state</span><b class="pl-run" id="pl-app-state">not created</b></p>
+                </div>
+
+                <div class="wire" id="pl-wire" aria-hidden="true">
+                  <span class="wire-label">JDBC</span>
+                  <span class="wire-line"></span>
+                  <span class="wire-label">:5432</span>
+                </div>
+
+                <div class="mcu off" id="pl-db">
+                  <p class="mcu-name">student-db <span>postgres:16</span></p>
+                  <p class="mcu-line"><span>volume</span><b>student-db-data</b></p>
+                  <p class="mcu-line"><span>rows</span><b id="pl-db-rows">—</b></p>
+                  <p class="mcu-line"><span>ports</span><b>5460 → 5432</b></p>
+                  <p class="mcu-line"><span>state</span><b class="pl-run" id="pl-db-state">not created</b></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mini pl-site">
+              <div class="mini-bar"><span>http://ubuntu-vm/</span><code id="pl-site-ver">connection refused</code></div>
+              <p class="fig-status" id="pl-site-down">Nothing is listening on port 80 yet. The app shows up here once a pipeline deploys it.</p>
+              <div class="pl-site-up" id="pl-site-up" hidden>
+                <div class="pl-site-tools">
+                  <label class="field field-inline">
+                    <span>Search</span>
+                    <input id="pl-search" type="search" placeholder="name, email or major" autocomplete="off" />
+                  </label>
+                  <button type="button" class="btn btn-sm" id="pl-add">Add student</button>
+                </div>
+                <ul class="pl-rows" id="pl-rows" aria-live="polite"></ul>
+                <form class="pl-form" id="pl-form" autocomplete="off" novalidate hidden>
+                  <label class="field"><span>First name</span><input id="pl-f-first" type="text" maxlength="30" /></label>
+                  <label class="field"><span>Last name</span><input id="pl-f-last" type="text" maxlength="30" /></label>
+                  <label class="field"><span>Email</span><input id="pl-f-email" type="email" maxlength="60" /></label>
+                  <label class="field"><span>Major</span><input id="pl-f-major" type="text" maxlength="40" /></label>
+                  <div class="pl-form-foot">
+                    <button type="submit" class="btn btn-sm btn-solid" id="pl-save">Add student</button>
+                    <button type="button" class="btn btn-sm" id="pl-cancel">Cancel</button>
+                    <p id="pl-form-error" role="alert" hidden></p>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <p class="fig-status" id="pl-status" aria-live="polite">Nothing is deployed yet. Push a commit and the runner on the Ubuntu VM takes it from there.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ---------- 02 AES ---------- -->
+      <article class="plate reveal" id="p-aes">
+        <div class="plate-info">
+          <p class="plate-meta"><span class="plate-no">02</span><span>Security</span><span>Jun 2026</span><span>Team of 2</span></p>
           <h3>AES-128 Encryption Simulator</h3>
-          <p class="tagline">A from-scratch AES implementation that you can actually watch encrypt, step by step.</p>
+          <p class="lede">AES usually hides behind a library call. For our Data Security course we wrote it from the raw specification — no crypto libraries — and built a GUI that shows the 4×4 state after every single step.</p>
+          <ul class="built">
+            <li>SubBytes, ShiftRows, MixColumns over GF(2⁸) and AddRoundKey, all written by hand.</li>
+            <li>The full key schedule: 11 round keys, with RotWord, SubWord, Rcon and the g-function shown step by step.</li>
+            <li>A Tkinter interface that traces the state through any round you pick.</li>
+          </ul>
+          <ul class="chips" aria-label="Stack">
+            <li>Python</li><li>Tkinter</li><li>GF(2⁸) arithmetic</li><li>No crypto libraries</li>
+          </ul>
+          <p class="plate-links">
+            <a class="link" href="https://github.com/Malakkserag/AES_ENCRYPTION_PYTHON" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg>Repository<svg class="ar"><use href="#i-arrow"/></svg></a>
+          </p>
         </div>
-        <div class="badges"><span class="badge">Security</span><span class="badge">Algorithms</span></div>
-      </div>
-      <div class="proj-body">
-        <div>
-          <div class="blk">
-            <p class="blk-h">The problem &amp; engineering challenge</p>
-            <p>AES is usually a black box hidden inside a library. I wanted to understand — and teach — exactly what happens in each round, which meant implementing the cipher from first principles with no crypto libraries, including arithmetic over the GF(2⁸) finite field, and then making the internal state legible through a live visualization.</p>
-          </div>
-          <div class="blk">
-            <p class="blk-h">Key deliverables</p>
-            <ul class="metrics">
-              <li>Full AES-128 built from scratch: SubBytes, ShiftRows, MixColumns over GF(2⁸), and AddRoundKey.</li>
-              <li>Complete key expansion generating all 11 round keys.</li>
-              <li>Tkinter GUI that renders the 4×4 state matrix after every step and round.</li>
-              <li>A key-expansion mode visualizing RotWord, SubWord, Rcon and the g-function.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="arch">
-          <div class="split">
-            <p class="sl">Core</p>
-            <div class="chips"><span class="chip">Python (no crypto libs)</span><span class="chip">GF(2⁸) arithmetic</span><span class="chip">S-Box / key schedule</span></div>
-          </div>
-          <div class="split">
-            <p class="sl">Interface</p>
-            <div class="chips"><span class="chip">Tkinter GUI</span><span class="chip">State-matrix visualization</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="proj-foot">
-        <a href="https://github.com/Malakkserag" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.7c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg> View repository</a>
-        <a href="https://github.com/Malakkserag" target="_blank" rel="noopener">⬡ GUI walkthrough</a>
-      </div>
-    </article>
 
-    <!-- Project 3: News Platform -->
-    <article class="proj reveal">
-      <div class="proj-top">
-        <div>
-          <span class="proj-id">PROJECT 03 · July 2025 · MTS internship</span>
-          <h3>News Platform (Web + Mobile)</h3>
-          <p class="tagline">One content backend powering a responsive website and a native mobile app.</p>
-        </div>
-        <div class="badges"><span class="badge">Full-Stack</span><span class="badge">Mobile</span></div>
-      </div>
-      <div class="proj-body">
-        <div>
-          <div class="blk">
-            <p class="blk-h">The problem &amp; engineering challenge</p>
-            <p>The platform needed to serve the same dynamic, category-filtered content to two very different clients — a Vue web app and a Flutter mobile app — without duplicating logic. The engineering work was designing a clean REST layer that both front-ends could consume, while keeping each interface responsive and real-time.</p>
+        <div class="fig" id="aes-demo">
+          <div class="fig-bar">
+            <span class="fig-tag">Fig. 2</span>
+            <span class="fig-title">AES-128, one step at a time</span>
+            <span class="fig-live">Live</span>
           </div>
-          <div class="blk">
-            <p class="blk-h">Key deliverables</p>
-            <ul class="metrics">
-              <li>Full-stack platform with dynamic content rendering, category-based filtering and real-time updates.</li>
-              <li>RESTful APIs designed and integrated as the shared contract between front-end and back-end.</li>
-              <li>Responsive web and mobile interfaces built for accessibility across devices.</li>
-              <li>Delivered as one of 5+ full-stack and mobile applications during the MTS internship.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="arch">
-          <div class="split">
-            <p class="sl">Front-End</p>
-            <div class="chips"><span class="chip">Vue.js (web)</span><span class="chip">Flutter (mobile)</span></div>
-          </div>
-          <div class="split">
-            <p class="sl">Back-End</p>
-            <div class="chips"><span class="chip">Node.js</span><span class="chip">REST APIs</span><span class="chip">JSON</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="proj-foot">
-        <a href="https://github.com/Malakkserag" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.7c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg> View repository</a>
-        <a href="https://github.com/Malakkserag" target="_blank" rel="noopener">⬡ Architecture diagram</a>
-      </div>
-    </article>
+          <div class="fig-body">
+            <form class="aes-inputs" id="aes-form" autocomplete="off" novalidate>
+              <label class="field">
+                <span>Plaintext</span>
+                <input id="aes-pt" type="text" value="MALAK SERAG 2028" spellcheck="false" maxlength="32" />
+              </label>
+              <label class="field">
+                <span>Key</span>
+                <input id="aes-key" type="text" value="COMPUTERENGINEER" spellcheck="false" maxlength="32" />
+              </label>
+              <div class="seg" role="group" aria-label="Input format">
+                <button type="button" class="on" data-mode="text" aria-pressed="true">Text</button>
+                <button type="button" data-mode="hex" aria-pressed="false">Hex</button>
+              </div>
+            </form>
+            <p class="aes-error" id="aes-error" role="alert" hidden></p>
 
-    <!-- Project 4: Cinema Booking -->
-    <article class="proj reveal">
-      <div class="proj-top">
-        <div>
-          <span class="proj-id">PROJECT 04 · December 2025</span>
+            <div class="aes-stage">
+              <div class="mx-block">
+                <p class="mx-label">State in</p>
+                <div class="mx" id="aes-in"></div>
+              </div>
+              <div class="aes-op" aria-hidden="true">
+                <span id="aes-op-sym">→</span>
+              </div>
+              <div class="mx-block">
+                <p class="mx-label">State out</p>
+                <div class="mx" id="aes-out"></div>
+              </div>
+              <div class="mx-block mx-key" id="aes-key-block">
+                <p class="mx-label" id="aes-key-label">Round key 0</p>
+                <div class="mx" id="aes-rk"></div>
+              </div>
+            </div>
+
+            <div class="aes-readout" aria-live="polite">
+              <p class="aes-step"><span id="aes-round">Round 0</span><b id="aes-opname">Input</b></p>
+              <p class="aes-explain" id="aes-explain"></p>
+            </div>
+
+            <div class="transport">
+              <button type="button" class="icon-btn" id="aes-prev" aria-label="Previous step"><svg><use href="#i-prev"/></svg></button>
+              <button type="button" class="icon-btn solid" id="aes-play" aria-label="Play"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></button>
+              <button type="button" class="icon-btn" id="aes-next" aria-label="Next step"><svg><use href="#i-next"/></svg></button>
+              <input type="range" id="aes-scrub" min="0" max="40" value="0" step="1" aria-label="Step" />
+              <span class="transport-count" id="aes-count">0 / 40</span>
+            </div>
+            <p class="aes-cipher">ciphertext <code id="aes-cipher"></code></p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ---------- 03 RFID ---------- -->
+      <article class="plate reveal" id="p-rfid">
+        <div class="plate-info">
+          <p class="plate-meta"><span class="plate-no">03</span><span>Embedded</span><span>Jun 2026</span><span>Team of 3</span></p>
+          <h3>RFID Access Control System</h3>
+          <p class="lede">A door lock split across two processors. An Arduino with an MFRC522 reads each card over SPI and makes the decision; an AT89C51 does everything you can see and hear, driven by a single byte over a 9600-baud serial link.</p>
+          <ul class="built">
+            <li>Card UIDs checked against EEPROM, with the first four cards auto-enrolled so the lock remembers them across power cycles.</li>
+            <li>8051 assembly for the LCD driver, the servo's PWM timing and the LED and buzzer logic.</li>
+            <li>The whole circuit designed and simulated in Proteus before any hardware was assembled.</li>
+          </ul>
+          <ul class="chips" aria-label="Stack">
+            <li>8051 Assembly</li><li>AT89C51</li><li>Arduino</li><li>MFRC522</li><li>SPI</li><li>UART</li><li>EEPROM</li><li>Proteus</li>
+          </ul>
+          <p class="plate-links">
+            <a class="link" href="https://github.com/Malakkserag/RFID_Scanning_system_8051" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg>Repository<svg class="ar"><use href="#i-arrow"/></svg></a>
+          </p>
+        </div>
+
+        <div class="fig" id="rfid-demo">
+          <div class="fig-bar">
+            <span class="fig-tag">Fig. 3</span>
+            <span class="fig-title">Tap a card on the reader</span>
+            <span class="fig-live">Live</span>
+          </div>
+          <div class="fig-body">
+            <div class="rfid-cards" id="rfid-cards" role="group" aria-label="RFID cards"></div>
+
+            <div class="rfid-board">
+              <div class="mcu" id="rfid-arduino">
+                <p class="mcu-name">Arduino <span>+ MFRC522</span></p>
+                <p class="mcu-line"><span>SPI</span><b id="rfid-uid">— — — —</b></p>
+                <div class="eeprom">
+                  <p>EEPROM <span id="rfid-count">0 / 4</span></p>
+                  <ol id="rfid-slots"><li></li><li></li><li></li><li></li></ol>
+                </div>
+              </div>
+
+              <div class="wire" aria-hidden="true">
+                <span class="wire-label">TX → P3.0</span>
+                <span class="wire-line"><i id="rfid-byte"></i></span>
+                <span class="wire-label">9600 baud</span>
+              </div>
+
+              <div class="mcu" id="rfid-8051">
+                <p class="mcu-name">AT89C51 <span>8051</span></p>
+                <div class="lcd" aria-hidden="true"><span id="rfid-lcd1">                </span><span id="rfid-lcd2">                </span></div>
+                <div class="outputs">
+                  <span class="led led-g" id="rfid-green"><i></i>P2.2</span>
+                  <span class="led led-r" id="rfid-red"><i></i>P2.3</span>
+                  <span class="servo" id="rfid-servo"><i></i>P3.3 <b>locked</b></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="fig-foot">
+              <p class="fig-status" id="rfid-status" aria-live="polite">Waiting for a card. The first four get enrolled; after that, strangers are turned away.</p>
+              <button type="button" class="btn btn-sm" id="rfid-reset"><svg><use href="#i-reset"/></svg>Wipe EEPROM</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ---------- 04 CyberClash ---------- -->
+      <article class="plate reveal" id="p-cyberclash">
+        <div class="plate-info">
+          <p class="plate-meta"><span class="plate-no">04</span><span>Artificial intelligence</span><span>Oct 2026</span></p>
+          <h3>CyberClash AI</h3>
+          <p class="lede">A two-player, zero-sum strategy game on a ten-host network. The attacker starts at H0 and tries to reach the database on H5 and exfiltrate it; the defender patches, isolates and restores hosts on a budget of 10.</p>
+          <ul class="built">
+            <li>Full Minimax, depth-limited Minimax and Alpha-Beta pruning over one shared game model.</li>
+            <li>Benchmarks of expanded nodes, timing and memory from depth 1 to 5, showing how much pruning saves.</li>
+            <li>Unit tests for the rules and for both searches agreeing, plus a PySide6 GUI to play against the AI.</li>
+          </ul>
+          <ul class="chips" aria-label="Stack">
+            <li>Python</li><li>Minimax</li><li>Alpha-Beta pruning</li><li>PySide6</li><li>unittest</li>
+          </ul>
+          <p class="plate-links">
+            <a class="link" href="https://github.com/Malakkserag/CyberClash-AI" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg>Repository<svg class="ar"><use href="#i-arrow"/></svg></a>
+          </p>
+        </div>
+
+        <div class="fig" id="cc-demo">
+          <div class="fig-bar">
+            <span class="fig-tag">Fig. 4</span>
+            <span class="fig-title">Play against the search</span>
+            <span class="fig-live">Live</span>
+          </div>
+          <div class="fig-body">
+            <div class="cc-setup">
+              <div class="seg" role="group" aria-label="Your side" id="cc-side">
+                <button type="button" class="on" data-side="attacker" aria-pressed="true">Play attacker</button>
+                <button type="button" data-side="defender" aria-pressed="false">Play defender</button>
+              </div>
+              <label class="cc-depth">Search depth
+                <select id="cc-depth">
+                  <option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option>
+                </select>
+              </label>
+              <button type="button" class="btn btn-sm" id="cc-reset"><svg><use href="#i-reset"/></svg>New game</button>
+            </div>
+
+            <dl class="cc-hud">
+              <div><dt>Ply</dt><dd id="cc-ply">0 / 10</dd></div>
+              <div><dt>Defender budget</dt><dd id="cc-budget">10</dd></div>
+              <div><dt>Zero-day</dt><dd id="cc-zero">ready</dd></div>
+              <div><dt>Utility</dt><dd id="cc-util">0</dd></div>
+            </dl>
+
+            <div class="cc-board">
+              <svg id="cc-graph" viewBox="0 0 640 280" role="group" aria-label="Network of ten hosts"></svg>
+              <ul class="cc-legend" aria-hidden="true">
+                <li><i class="k-comp"></i>compromised</li>
+                <li><i class="k-patch"></i>patched</li>
+                <li><i class="k-iso"></i>isolated</li>
+                <li><i class="k-target"></i>database</li>
+              </ul>
+            </div>
+
+            <div class="cc-actions" id="cc-actions" role="group" aria-label="Available moves"></div>
+            <p class="fig-status" id="cc-status" aria-live="polite"></p>
+
+            <div class="cc-search" id="cc-search" hidden>
+              <p>Last AI move, searched both ways</p>
+              <div class="bar-row"><span>Minimax</span><span class="bar"><i id="cc-bar-mm"></i></span><b id="cc-n-mm">0</b></div>
+              <div class="bar-row"><span>Alpha-Beta</span><span class="bar"><i id="cc-bar-ab" class="accent"></i></span><b id="cc-n-ab">0</b></div>
+              <p class="cc-search-note" id="cc-search-note"></p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ---------- 05 + 06 ---------- -->
+      <div class="duo">
+        <article class="card reveal" id="p-news">
+          <p class="plate-meta"><span class="plate-no">05</span><span>Full-stack</span><span>Jul 2025</span><span>MTS internship</span></p>
+          <h3>News Platform</h3>
+          <p class="lede">A news site built during my internship at Misr Technology Services: a Nuxt front end over its own server API, with article pages, search and author filtering, paired with a Flutter client for mobile.</p>
+
+          <div class="mini" id="news-demo">
+            <div class="mini-bar"><code id="news-req">GET /api/news</code></div>
+            <label class="field field-inline">
+              <span>Search</span>
+              <input id="news-q" type="search" placeholder="try “climate”" autocomplete="off" />
+            </label>
+            <ul class="news-list" id="news-list" aria-live="polite"></ul>
+          </div>
+
+          <ul class="chips" aria-label="Stack">
+            <li>Nuxt 3</li><li>Vue</li><li>TypeScript</li><li>Tailwind CSS</li><li>REST API</li><li>Flutter</li>
+          </ul>
+          <p class="plate-links">
+            <a class="link" href="https://github.com/Malakkserag/news-website" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg>Repository<svg class="ar"><use href="#i-arrow"/></svg></a>
+            <a class="link" href="https://news-website-psi-nine.vercel.app" target="_blank" rel="noopener">Live site<svg class="ar"><use href="#i-arrow"/></svg></a>
+          </p>
+        </article>
+
+        <article class="card reveal" id="p-cinema">
+          <p class="plate-meta"><span class="plate-no">06</span><span>Desktop · Database</span><span>Dec 2025</span></p>
           <h3>Cinema Booking System</h3>
-          <p class="tagline">Real-time seat selection that never double-books, backed by a transactional database.</p>
-        </div>
-        <div class="badges"><span class="badge">Full-Stack</span><span class="badge">Database</span></div>
-      </div>
-      <div class="proj-body">
-        <div>
-          <div class="blk">
-            <p class="blk-h">The problem &amp; engineering challenge</p>
-            <p>Seat booking is a classic concurrency problem: two users must never reserve the same seat. The challenge was modeling seat availability and booking transactions so the database stays consistent under real-time updates, while keeping the selection UI fast and intuitive enough that the flow feels effortless.</p>
+          <p class="lede">A JavaFX desktop app that walks from movie to hall to seat to payment, backed by MySQL and a multithreaded socket server. Card and cash share one Payment interface, so adding a method is a new class, not a rewrite.</p>
+
+          <div class="mini" id="cinema-demo">
+            <div class="mini-bar"><span>Hall 1</span><code id="cinema-count">0 seats</code></div>
+            <div class="screen" aria-hidden="true">screen</div>
+            <div class="seats" id="cinema-seats" role="group" aria-label="Seats"></div>
+            <div class="cinema-pay">
+              <div class="seg" role="group" aria-label="Payment method" id="cinema-method">
+                <button type="button" class="on" data-pay="Card" aria-pressed="true">Card</button>
+                <button type="button" data-pay="Cash" aria-pressed="false">Cash</button>
+              </div>
+              <button type="button" class="btn btn-sm btn-solid" id="cinema-book" disabled>Book</button>
+            </div>
+            <p class="fig-status" id="cinema-status" aria-live="polite">Pick a few seats.</p>
           </div>
-          <div class="blk">
-            <p class="blk-h">Key deliverables</p>
-            <ul class="metrics">
-              <li>Real-time seat selection and reservation management end to end.</li>
-              <li>Back-end logic and database integration managing seat availability, booking transactions and system updates.</li>
-              <li>An intuitive, user-friendly interface that streamlines the full booking journey.</li>
+
+          <ul class="chips" aria-label="Stack">
+            <li>Java</li><li>JavaFX</li><li>MySQL</li><li>Sockets</li><li>OOP</li>
+          </ul>
+          <p class="plate-links">
+            <a class="link" href="https://github.com/Malakkserag/Cinema-booking-system" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg>Repository<svg class="ar"><use href="#i-arrow"/></svg></a>
+          </p>
+        </article>
+      </div>
+
+      <!-- ---------- notebooks ---------- -->
+      <div class="sub reveal" id="data">
+        <header class="sub-head">
+          <h3>Data &amp; machine-learning notebooks</h3>
+          <p>Six studies from a semester of data analytics, each taken from raw data through cleaning, exploration, modelling and evaluation.</p>
+        </header>
+        <ul class="ledger">
+          <li>
+            <a href="https://github.com/Malakkserag/moocs_NLP_Data_Analytics" target="_blank" rel="noopener">
+              <span class="l-name">MOOC forum opinions</span>
+              <span class="l-desc">Classifying student posts with an NLP pipeline, comparing six classifiers under class imbalance.</span>
+              <span class="l-tags">TF-IDF · PCA · χ² · SVM · Random Forest · GridSearchCV</span>
+              <svg class="ar"><use href="#i-arrow"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/Malakkserag/moocs_Data_Analytics" target="_blank" rel="noopener">
+              <span class="l-name">MOOC learner segments</span>
+              <span class="l-desc">Grouping learners by behaviour with no target variable, on features such as confusion and sentiment.</span>
+              <span class="l-tags">K-Means · Elbow method · EDA</span>
+              <svg class="ar"><use href="#i-arrow"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/Malakkserag/heart_disease_data_analytics" target="_blank" rel="noopener">
+              <span class="l-name">Heart disease risk</span>
+              <span class="l-desc">Predicting heart disease from medical records, with missing-value handling and feature encoding.</span>
+              <span class="l-tags">Logistic regression · Confusion matrix · Precision / recall</span>
+              <svg class="ar"><use href="#i-arrow"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/Malakkserag/Housing_Data_Analytics" target="_blank" rel="noopener">
+              <span class="l-name">Housing prices</span>
+              <span class="l-desc">California and Boston datasets, each with its own preprocessing, engineered features and regression model.</span>
+              <span class="l-tags">Linear regression · Feature engineering · MAE · MSE · R²</span>
+              <svg class="ar"><use href="#i-arrow"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/Malakkserag/world-happiness-data-analysis" target="_blank" rel="noopener">
+              <span class="l-name">World Happiness 2015</span>
+              <span class="l-desc">How GDP, health and other factors relate to national happiness scores.</span>
+              <span class="l-tags">EDA · Correlation · Visualisation</span>
+              <svg class="ar"><use href="#i-arrow"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/Malakkserag/all-seasons-dataset-analysis" target="_blank" rel="noopener">
+              <span class="l-name">NBA, all seasons</span>
+              <span class="l-desc">Player performance trends across seasons: points, assists, rebounds and efficiency.</span>
+              <span class="l-tags">EDA · Pandas · Seaborn</span>
+              <svg class="ar"><use href="#i-arrow"/></svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ---------- also built ---------- -->
+      <div class="sub reveal">
+        <header class="sub-head">
+          <h3>Also built</h3>
+        </header>
+        <div class="trio">
+          <a class="tile" href="https://github.com/Malakkserag/Graphical-Scientific-Calculator" target="_blank" rel="noopener">
+            <p class="tile-meta">C# · OxyPlot · Apr 2025</p>
+            <h4>Graphing &amp; Scientific Calculator<svg class="ar"><use href="#i-arrow"/></svg></h4>
+            <p>Evaluates trigonometric, logarithmic and exponential expressions and plots functions of a variable in real time.</p>
+          </a>
+          <div class="tile">
+            <p class="tile-meta">Vue · Node.js · Express · Jul 2025</p>
+            <h4>Internship web apps</h4>
+            <p>A forum, a blog, a to-do manager and a reaction timer from the MTS internship, with responsive interfaces over REST back ends.</p>
+            <p class="tile-links">
+              <a href="https://github.com/Malakkserag/dojoBlog_MTS" target="_blank" rel="noopener">Blog</a>
+              <a href="https://github.com/Malakkserag/ReactionTimer_Game" target="_blank" rel="noopener">Reaction timer</a>
+              <a href="https://github.com/Malakkserag/WebForm" target="_blank" rel="noopener">Web form</a>
+              <a href="https://github.com/Malakkserag/TODO-LIST" target="_blank" rel="noopener">To-do list</a>
+            </p>
+          </div>
+          <div class="tile">
+            <p class="tile-meta">C++ · File I/O · Mar 2025</p>
+            <h4>Student Management System</h4>
+            <p>Create, read, update and delete student records, persisted to disk with file handling and structured for fast lookup.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TOOLKIT ============ -->
+  <section id="toolkit" class="section">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-no">02</span>
+        <h2>The <em>toolkit</em></h2>
+        <p>What I reach for, grouped by the layer it lives at. Everything here has been used in a project above or on an internship below.</p>
+      </header>
+
+      <dl class="spec-table reveal">
+        <div>
+          <dt>Languages</dt>
+          <dd><ul class="chips"><li>C</li><li>C++</li><li>C#</li><li>Java</li><li>Python</li><li>JavaScript</li><li>TypeScript</li><li>SQL</li><li>8051 Assembly</li><li>VHDL</li></ul></dd>
+        </div>
+        <div>
+          <dt>Hardware &amp; embedded</dt>
+          <dd><ul class="chips"><li>AT89C51 (8051)</li><li>Arduino</li><li>MFRC522 RFID</li><li>EEPROM</li><li>SPI</li><li>Serial / UART</li><li>LCD &amp; servo interfacing</li><li>Digital design: FSMs, counters, flip-flops</li><li>Proteus</li><li>ISE Project Navigator</li></ul></dd>
+        </div>
+        <div>
+          <dt>DevOps &amp; systems</dt>
+          <dd><ul class="chips"><li>Linux / Ubuntu</li><li>Git</li><li>GitLab CI/CD</li><li>GitLab Runner</li><li>Docker</li><li>Docker Hub</li><li>Maven</li><li>Spring Boot</li><li>PostgreSQL</li><li>VirtualBox</li><li>NGINX (exposure)</li><li>VMware ESXi / vSphere (exposure)</li></ul></dd>
+        </div>
+        <div>
+          <dt>Cybersecurity</dt>
+          <dd><ul class="chips"><li>Network security</li><li>IAM / PAM</li><li>Active Directory</li><li>Vulnerability management</li><li>OWASP</li><li>NDR</li><li>IPS</li><li>Endpoint security</li><li>DLP</li><li>Email security</li><li>AES-128</li><li>S-Box &amp; key expansion</li><li>GF(2⁸) arithmetic</li></ul></dd>
+        </div>
+        <div>
+          <dt>Data, ML &amp; AI</dt>
+          <dd><ul class="chips"><li>Pandas</li><li>NumPy</li><li>Scikit-learn</li><li>Matplotlib</li><li>Seaborn</li><li>NLTK</li><li>EDA</li><li>Statistical analysis</li><li>Linear &amp; logistic regression</li><li>K-Means</li><li>Feature engineering</li><li>Model evaluation</li><li>Minimax</li><li>Alpha-Beta pruning</li><li>Jupyter</li></ul></dd>
+        </div>
+        <div>
+          <dt>Business intelligence</dt>
+          <dd><ul class="chips"><li>Tableau</li><li>Excel &amp; pivot tables</li><li>KPIs</li><li>Data modelling</li><li>Fact &amp; dimension tables</li><li>Data warehousing</li><li>Data marts</li><li>OLAP</li><li>ETL</li><li>Self-service BI</li></ul></dd>
+        </div>
+        <div>
+          <dt>Web &amp; mobile</dt>
+          <dd><ul class="chips"><li>Vue.js</li><li>Nuxt.js</li><li>Node.js</li><li>Express.js</li><li>Flutter</li><li>Tailwind CSS</li><li>HTML &amp; CSS</li><li>REST APIs</li><li>JSON</li></ul></dd>
+        </div>
+        <div>
+          <dt>Desktop &amp; GUI</dt>
+          <dd><ul class="chips"><li>JavaFX</li><li>Tkinter</li><li>PySide6</li><li>C# with OxyPlot</li><li>Windows Forms</li></ul></dd>
+        </div>
+        <div>
+          <dt>Tools</dt>
+          <dd><ul class="chips"><li>Postman</li><li>VS Code</li><li>Visual Studio</li><li>Android Studio</li><li>MATLAB</li><li>AutoCAD</li><li>Arduino IDE</li><li>GNS3</li><li>SAP (exposure)</li></ul></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience" class="section">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-no">03</span>
+        <h2>Where I've <em>worked</em></h2>
+        <p>Four internships across DevOps, data, security and full-stack on one side, three years of explaining computer science to other people on the other.</p>
+      </header>
+
+      <ol class="timeline">
+        <li class="reveal">
+          <p class="when">Aug – Sep 2026</p>
+          <div>
+            <h3>DevOps Intern</h3>
+            <p class="org">Misr Technology Services (MTS) · Cairo</p>
+            <ul>
+              <li>Designed and built a complete CI/CD pipeline for a Spring Boot Student Manager application, with automated build, test, package, Docker image build, Docker Hub push and deployment stages. <a class="inline" href="#p-pipeline">Watch it run ↑</a></li>
+              <li>Configured GitLab Runner with the shell executor on Ubuntu, and wired in CI/CD variables for Docker Hub authentication and automated image delivery.</li>
+              <li>Containerised the application and its PostgreSQL database, setting up Docker networks, persistent volumes, port mapping and service connectivity.</li>
+              <li>Deployed to an Ubuntu virtual machine on VirtualBox, and troubleshot PostgreSQL connectivity, Docker networking, ports, Maven builds and pipeline execution.</li>
+            </ul>
+            <ul class="chips" aria-label="Tools">
+              <li>Linux / Ubuntu</li><li>GitLab CI/CD</li><li>GitLab Runner</li><li>Docker</li><li>Docker Hub</li><li>Maven</li><li>Spring Boot</li><li>PostgreSQL</li><li>VirtualBox</li>
             </ul>
           </div>
-        </div>
-        <div class="arch">
-          <div class="split">
-            <p class="sl">Application</p>
-            <div class="chips"><span class="chip">Full-stack web app</span><span class="chip">Real-time updates</span></div>
+        </li>
+        <li class="reveal">
+          <p class="when">Aug 2026</p>
+          <div>
+            <h3>Data Science &amp; Business Intelligence Intern</h3>
+            <p class="org">Misr Technology Services (MTS) · Cairo</p>
+            <ul>
+              <li>Explored large trade datasets with Python, Pandas, Matplotlib and Seaborn to find trends, correlations, outliers and business insights.</li>
+              <li>Applied descriptive and inferential statistics, data cleaning, visualisation and correlation analysis to turn raw data into something a business can act on.</li>
+              <li>Built interactive Tableau dashboards with KPI cards, calculated fields, filters, date analysis, data modelling and fact/dimension relationships.</li>
+              <li>Worked with BI concepts including data warehouses, data marts, OLAP, ETL, self-service BI and KPI development.</li>
+            </ul>
+            <ul class="chips" aria-label="Tools">
+              <li>Python</li><li>Pandas</li><li>Matplotlib</li><li>Seaborn</li><li>Tableau</li><li>Data modelling</li><li>OLAP</li><li>ETL</li>
+            </ul>
           </div>
-          <div class="split">
-            <p class="sl">Data</p>
-            <div class="chips"><span class="chip">Relational database</span><span class="chip">Booking transactions</span></div>
+        </li>
+        <li class="reveal">
+          <p class="when">Jul 2026</p>
+          <div>
+            <h3>Cybersecurity &amp; Cloud Computing Intern</h3>
+            <p class="org">Mideast Communication Systems (MCS) · Cairo</p>
+            <ul>
+              <li>Completed a four-week programme combining intensive cybersecurity training, practical labs, a technical CTF and security-team shadowing across enterprise environments.</li>
+              <li>Passed a three-round CTF covering network-team, blue-team and red-team scenarios with a <span class="score">92% overall score</span>.</li>
+              <li>Worked with identity and access management, privileged access, Active Directory, network detection and response, intrusion prevention, vulnerability management, and email and endpoint security.</li>
+              <li>Used security platforms including Palo Alto Cortex XDR/XSIAM, Trellix, BeyondTrust and Kaspersky Cloud, along with DLP, endpoint policies, monitoring and security analytics.</li>
+              <li>Ran labs in Docker, Linux administration, security monitoring, vulnerability assessment and Log4Shell/OWASP research, with exposure to NGINX, VMware ESXi/vSphere, cloud computing, enterprise architecture and disaster recovery.</li>
+            </ul>
+            <ul class="chips" aria-label="Tools">
+              <li>IAM / PAM</li><li>Active Directory</li><li>Cortex XDR / XSIAM</li><li>Trellix</li><li>BeyondTrust</li><li>NDR</li><li>IPS</li><li>OWASP</li><li>DLP</li><li>Docker</li><li>Linux</li>
+            </ul>
           </div>
+        </li>
+        <li class="reveal">
+          <p class="when">Jul – Aug 2025</p>
+          <div>
+            <h3>Full-Stack Developer Intern <span>Web &amp; Mobile</span></h3>
+            <p class="org">Misr Technology Services (MTS) · Cairo</p>
+            <ul>
+              <li>Developed full-stack web and mobile applications using Vue.js, Nuxt.js, Node.js, Express.js and Flutter.</li>
+              <li>Built REST APIs, responsive user interfaces and JSON-based functionality for news, forum and blog platforms.</li>
+              <li>Contributed to back-end API development and front-end implementation, including the Discover tab of a news platform.</li>
+            </ul>
+            <ul class="chips" aria-label="Tools">
+              <li>Vue.js</li><li>Nuxt.js</li><li>Node.js</li><li>Express.js</li><li>Flutter</li><li>Tailwind CSS</li><li>Postman</li><li>Git</li>
+            </ul>
+          </div>
+        </li>
+        <li class="reveal">
+          <p class="when">Aug 2025</p>
+          <div>
+            <h3>IT Trainee</h3>
+            <p class="org">Petrojet · Cairo</p>
+            <ul>
+              <li>Gained practical exposure to enterprise networking, system administration and infrastructure.</li>
+              <li>Simulated networks using GNS3 and explored SAP environments.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="reveal">
+          <p class="when">Jul 2021 – May 2024</p>
+          <div>
+            <h3>Computer Science Teaching Assistant <span>IGCSE O Level</span></h3>
+            <p class="org">Rowad College · Cairo</p>
+            <ul>
+              <li>Supported IGCSE students in programming, algorithms, logic gates and exam preparation.</li>
+              <li>Simplified complex technical concepts and adapted explanations to different learning levels.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="reveal">
+          <p class="when">Nov 2023 – Feb 2024</p>
+          <div>
+            <h3>Mathematics Teaching Assistant <span>IGCSE O Level &amp; AS</span></h3>
+            <p class="org">Rowad College · Cairo</p>
+            <ul>
+              <li>Supported IGCSE students in mathematical problem-solving, worked examples and exam preparation.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ EDUCATION ============ -->
+  <section id="education" class="section">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-no">04</span>
+        <h2>Where I <em>studied</em></h2>
+      </header>
+
+      <div class="edu reveal">
+        <div class="edu-item">
+          <p class="when">Expected Jan 2028</p>
+          <h3>Arab Academy for Science, Technology &amp; Maritime Transport</h3>
+          <p class="org">B.Sc. in Computer Engineering · Cairo</p>
+        </div>
+        <div class="edu-item">
+          <p class="when">2023</p>
+          <h3>Rowad College</h3>
+          <p class="org">British Diploma, IGCSE · Cairo</p>
         </div>
       </div>
-      <div class="proj-foot">
-        <a href="https://github.com/Malakkserag" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.7c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg> View repository</a>
-        <a href="https://github.com/Malakkserag" target="_blank" rel="noopener">⬡ Demo</a>
-      </div>
-    </article>
 
-    <!-- More projects -->
-    <div class="reveal" style="margin-top:40px">
-      <p class="course-h">More on GitHub</p>
-      <div class="more">
-        <a href="https://github.com/Malakkserag" target="_blank" rel="noopener">
-          <h4>ML &amp; Data Analytics</h4>
-          <p>Linear/logistic regression, K-Means segmentation and EDA on real datasets — evaluated with MAE, R², precision, recall and F1.</p>
-          <p class="mt">Python · Pandas · Scikit-learn</p>
-        </a>
-        <a href="https://github.com/Malakkserag" target="_blank" rel="noopener">
-          <h4>Graphing Scientific Calculator</h4>
-          <p>Evaluates complex expressions with real-time function plotting and an interactive, dynamic-input interface.</p>
-          <p class="mt">C# · OxyPlot</p>
-        </a>
-        <a href="https://github.com/Malakkserag" target="_blank" rel="noopener">
-          <h4>Web Applications Suite</h4>
-          <p>A forum, blog, to-do manager and reaction-timer game exploring varied architectures and real-time interaction.</p>
-          <p class="mt">JavaScript · Node.js</p>
-        </a>
-        <a href="https://github.com/Malakkserag" target="_blank" rel="noopener">
-          <h4>Student Management System</h4>
-          <p>CRUD records with file-handling persistence and structured data organization for fast, reliable access.</p>
-          <p class="mt">C++ · File I/O</p>
-        </a>
+      <div class="coursework reveal">
+        <p class="label">Coursework &amp; focus areas</p>
+        <ul class="chips">
+          <li>Digital Design</li>
+          <li>Microcontrollers &amp; Embedded Systems</li>
+          <li>Computer Architecture</li>
+          <li>Data Structures &amp; Algorithms</li>
+          <li>Object-Oriented Programming</li>
+          <li>Databases</li>
+          <li>Networks &amp; Network Security</li>
+          <li>Cryptography &amp; Data Security</li>
+          <li>Machine Learning &amp; Data Analytics</li>
+          <li>Signals &amp; Systems</li>
+        </ul>
+      </div>
+
+      <div class="sub reveal" id="certifications">
+        <header class="sub-head">
+          <h3>Certifications</h3>
+          <p>Short courses taken alongside the 2026 internships.</p>
+        </header>
+        <ul class="certs">
+          <li><span class="c-name">Docker Training Course for the Absolute Beginner</span><span class="c-by">KodeKloud</span><span class="c-when">Sep 2026</span></li>
+          <li><span class="c-name">Red Hat System Administration I</span><span class="c-by">Mahara-Tech · ITI</span><span class="c-when">Aug 2026</span></li>
+          <li><span class="c-name">Self-Presentation</span><span class="c-by">Wadhwani Foundation</span><span class="c-when">Jul 2026</span></li>
+          <li><span class="c-name">Effective Speaking and Listening Skills</span><span class="c-by">Wadhwani Foundation</span><span class="c-when">Jul 2026</span></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- 4. EXPERIENCE -->
-  <section id="experience" class="wrap">
-    <div class="reveal">
-      <p class="sec-label">04 · Where I've worked</p>
-      <h2 class="sec">Experience</h2>
-    </div>
-    <div class="xp reveal">
-      <div class="xp-item">
-        <div class="xp-head">
-          <h3>Full-Stack Developer Intern (Web &amp; Mobile)</h3>
-          <span class="when">Jul 2025 – Aug 2025</span>
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="section contact">
+    <div class="wrap">
+      <div class="contact-in reveal">
+        <div class="marks" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <span class="sec-no">05</span>
+        <h2>Let's build <em>something.</em></h2>
+        <p>I'm open to internships and collaborations across DevOps, security, data, hardware and software — and always up for an interesting problem.</p>
+        <a class="mail" href="mailto:malakkserag2@gmail.com">malakkserag2@gmail.com<svg class="ar"><use href="#i-arrow"/></svg></a>
+        <div class="contact-links">
+          <a class="btn" href="https://linkedin.com/in/malak-serag-ibrahim" target="_blank" rel="noopener"><svg><use href="#i-linkedin"/></svg>LinkedIn</a>
+          <a class="btn" href="https://github.com/Malakkserag" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg>GitHub</a>
+          <a class="btn" href="https://gitlab.com/Malak21" target="_blank" rel="noopener"><svg><use href="#i-gitlab"/></svg>GitLab</a>
+          <a class="btn" href="Malak%20Serag%20CV.pdf" target="_blank" rel="noopener"><svg><use href="#i-file"/></svg>Résumé (PDF)</a>
         </div>
-        <p class="xp-org">Misr Technology Services (MTS) · Cairo, Egypt</p>
-        <ul>
-          <li>Developed 5+ full-stack and mobile applications using Vue.js, Node.js and Flutter.</li>
-          <li>Designed RESTful APIs and responsive user interfaces.</li>
-          <li>Managed client-server communication using JSON.</li>
-          <li>Delivered projects including a news platform, forum system and blog.</li>
-        </ul>
-      </div>
-      <div class="xp-item">
-        <div class="xp-head">
-          <h3>IT Trainee</h3>
-          <span class="when">Aug 2025</span>
-        </div>
-        <p class="xp-org">Petrojet · Cairo, Egypt</p>
-        <ul>
-          <li>Gained experience in networking fundamentals and system administration.</li>
-          <li>Simulated networks using GNS3 and explored enterprise infrastructure.</li>
-          <li>Explored SAP systems and IT infrastructure.</li>
-        </ul>
-      </div>
-      <div class="xp-item">
-        <div class="xp-head">
-          <h3>Computer Science OL / IGCSE Teaching Assistant</h3>
-          <span class="when">Jul 2021 – May 2024</span>
-        </div>
-        <p class="xp-org">Rowad College · Cairo, Egypt</p>
-        <ul>
-          <li>Assisted students in algorithms, logic gates and programming concepts.</li>
-          <li>Explained complex technical topics in a simplified, structured manner.</li>
-        </ul>
-      </div>
-      <div class="xp-item">
-        <div class="xp-head">
-          <h3>Math OL / AS IGCSE Teaching Assistant</h3>
-          <span class="when">Nov 2023 – Feb 2024</span>
-        </div>
-        <p class="xp-org">Rowad College · Cairo, Egypt</p>
-        <ul>
-          <li>Supported students in mathematical problem-solving and exam preparation.</li>
-          <li>Strengthened analytical thinking and communication skills through teaching.</li>
-        </ul>
       </div>
     </div>
   </section>
-
-  <!-- 5. EDUCATION -->
-  <section id="education" class="wrap">
-    <div class="reveal">
-      <p class="sec-label">05 · Education</p>
-      <h2 class="sec">Education &amp; coursework</h2>
-    </div>
-    <div class="edu-grid reveal">
-      <div class="edu">
-        <h3>Arab Academy for Science, Technology &amp; Maritime Transport (AAST)</h3>
-        <p class="deg">B.Sc. in Computer Engineering</p>
-        <p class="meta">Cairo, Egypt · Expected Jan 2028</p>
-      </div>
-      <div class="edu">
-        <h3>Rowad College</h3>
-        <p class="deg">IGCSE Diploma</p>
-        <p class="meta">Cairo, Egypt · 2023</p>
-      </div>
-    </div>
-    <div class="reveal">
-      <p class="course-h">Core coursework &amp; focus areas</p>
-      <div class="chips">
-        <span class="chip">Digital Design (FSMs, Counters, Flip-Flops)</span>
-        <span class="chip">Microcontrollers &amp; Embedded Systems</span>
-        <span class="chip">Computer Architecture</span>
-        <span class="chip">Data Structures &amp; Algorithms</span>
-        <span class="chip">Object-Oriented Programming</span>
-        <span class="chip">Databases</span>
-        <span class="chip">Networks &amp; Network Security</span>
-        <span class="chip">Cryptography</span>
-        <span class="chip">Machine Learning &amp; Data Analytics</span>
-        <span class="chip">Signals &amp; Systems</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="wrap">
-    <div class="contact reveal">
-      <h2>Let's build something.</h2>
-      <p>I'm open to internships, new-grad roles and collaborations across the field — and always up for an interesting problem.</p>
-      <div class="links">
-        <a class="lnk primary" href="mailto:malakkserag2@gmail.com">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-          malakkserag2@gmail.com
-        </a>
-        <a class="lnk" href="https://linkedin.com/in/malak-serag-ibrahim" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="lnk" href="https://github.com/Malakkserag" target="_blank" rel="noopener">GitHub</a>
-        <a class="lnk" href="Malak%20Serag%20CV.pdf" target="_blank" rel="noopener">Resume</a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="wrap">
-    <div class="foot-in">
-      <span>© 2026 Malak Serag Ibrahim</span>
-      <span>Cairo, Egypt · +20 1200255462</span>
-      <span>Computer Engineering</span>
-    </div>
-  </footer>
 
 </main>
 
-<script>
-  // sticky nav background
-  const nav=document.getElementById('nav');
-  const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>20);
-  onScroll();
-  window.addEventListener('scroll',onScroll,{passive:true});
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span>© <span id="year">2026</span> Malak Serag Ibrahim</span>
+    <span>Cairo, Egypt</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
 
-  // reveal on scroll
-  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const items=document.querySelectorAll('.reveal');
-  if(reduce||!('IntersectionObserver' in window)){
-    items.forEach(el=>el.classList.add('in'));
-  }else{
-    const io=new IntersectionObserver((entries)=>{
-      entries.forEach((e,i)=>{
-        if(e.isIntersecting){
-          const el=e.target;
-          // small stagger for siblings in a grid
-          setTimeout(()=>el.classList.add('in'), Math.min(i*40,160));
-          io.unobserve(el);
-        }
-      });
-    },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
-    items.forEach(el=>io.observe(el));
-  }
-</script>
+<script src="assets/js/aes-core.js" defer></script>
+<script src="assets/js/cyberclash-core.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/pipeline-demo.js" defer></script>
+<script src="assets/js/aes-demo.js" defer></script>
+<script src="assets/js/rfid-demo.js" defer></script>
+<script src="assets/js/cyberclash-demo.js" defer></script>
+<script src="assets/js/mini-demos.js" defer></script>
 </body>
 </html>
-                                                                                                             

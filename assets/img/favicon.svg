@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .p{fill:#17161b}.b{fill:#17161b}.t{fill:#f4f1ea}
+    @media (prefers-color-scheme: dark){.p{fill:#eceaf3}.b{fill:#a898ff}.t{fill:#0d0d12}}
+  </style>
+  <g class="p">
+    <rect x="2" y="18" width="8" height="5" rx="1.5"/><rect x="2" y="29.500" width="8" height="5" rx="1.5"/><rect x="2" y="41" width="8" height="5" rx="1.5"/>
+    <rect x="54" y="18" width="8" height="5" rx="1.5"/><rect x="54" y="29.500" width="8" height="5" rx="1.5"/><rect x="54" y="41" width="8" height="5" rx="1.5"/>
+  </g>
+  <rect class="b" x="9" y="8" width="46" height="48" rx="9"/>
+  <path class="t" d="M19 44V20h5.200l7.800 13.200L39.800 20H45v24h-5V29.600l-6.400 10.800h-3.200L24 29.600V44z"/>
+</svg>
